@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Locale &#8212; rows 0.3.1 documentation</title>
+    <title>Locale &#8212; rows 0.3.2dev0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3.1',
+        VERSION:     '0.3.2dev0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -70,6 +70,15 @@ state:</p>
 <div class="highlight-text"><div class="highlight"><pre><span></span>Rio de Janeiro has 15989929 inhabitants
 </pre></div>
 </div>
+<div class="section" id="locale-dependency">
+<span id="locale-dependency"></span><h2>Locale dependency<a class="headerlink" href="#locale-dependency" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">rows.locale_context</span></code> depends on your operational system locales to work. In order to successfully use this context manager make sure the desired locale is available in a system level.</p>
+<p>For example, for Debian based systems:</p>
+<ol class="simple">
+<li>Make sure the desired locale is present and uncommented <code class="docutils literal"><span class="pre">/etc/locale.gen</span></code></li>
+<li>Run <code class="docutils literal"><span class="pre">locale-gen</span></code></li>
+</ol>
+</div>
 </div>
 
 
@@ -77,7 +86,15 @@ state:</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Locale</a><ul>
+<li><a class="reference internal" href="#locale-dependency">Locale dependency</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -111,7 +128,7 @@ state:</p>
       &copy;2014-2017, Álvaro Justen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

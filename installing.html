@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installing rows &#8212; rows 0.3.1 documentation</title>
+    <title>Installing rows &#8212; rows 0.3.2dev0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3.1',
+        VERSION:     '0.3.2dev0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -45,13 +45,13 @@
             
   <div class="section" id="installing-rows">
 <span id="installing-rows"></span><h1>Installing rows<a class="headerlink" href="#installing-rows" title="Permalink to this headline">¶</a></h1>
-<p>Directly from [PyPI][pypi-rows]:</p>
+<p>Directly from <a class="reference external" href="https://pypi.org/project/rows/">PyPI</a>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install rows
 </pre></div>
 </div>
 <p>You can also install directly from the GitHub repository to have the newest
 features (not pretty stable) by running:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install git+https://github.com/turicas/rows.git@develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install git+https://github.com/turicas/rows.git@develop#egg<span class="o">=</span>rows
 </pre></div>
 </div>
 <p>or:</p>
@@ -62,7 +62,7 @@ python setup.py install
 </div>
 <p>The use of virtualenv is recommended.</p>
 <p>You can create a development image using Docker:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>    cat Dockerfile <span class="p">|</span> docker build -t turicas/rows:latest -
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cat Dockerfile <span class="p">|</span> docker build -t turicas/rows:latest -
 </pre></div>
 </div>
 <p>The plugins <code class="docutils literal"><span class="pre">csv</span></code>, <code class="docutils literal"><span class="pre">dicts</span></code>, <code class="docutils literal"><span class="pre">json</span></code>, <code class="docutils literal"><span class="pre">sqlite</span></code> and <code class="docutils literal"><span class="pre">txt</span></code> are built-in by
@@ -72,6 +72,9 @@ dependencies, for example:</p>
 pip install rows<span class="o">[</span>xls<span class="o">]</span>
 </pre></div>
 </div>
+<blockquote>
+<div>Note: if you&#8217;re running another command line interpreter (like zsh) you may
+need to escape the characters <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code>.</div></blockquote>
 <p>You also need to install some dependencies to use the [command-line
 interface][rows-cli]. You can do it installing the <code class="docutils literal"><span class="pre">cli</span></code> extra requirement:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install rows<span class="o">[</span>cli<span class="o">]</span>
@@ -79,7 +82,7 @@ interface][rows-cli]. You can do it installing the <code class="docutils literal
 </div>
 <p>And - easily - you can install all the dependencies by using the <code class="docutils literal"><span class="pre">all</span></code> extra
 requirement:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>    pip install rows<span class="o">[</span>all<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install rows<span class="o">[</span>all<span class="o">]</span>
 </pre></div>
 </div>
 <p>If you use Debian [sid][debian-sid] or [testing][debian-testing] you can
@@ -92,6 +95,7 @@ apt install rows  <span class="c1"># Python library + CLI</span>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>dnf install python-row  <span class="c1"># Python library + CLI</span>
 </pre></div>
 </div>
+<p>You may need to install SQLite too (on Ubuntu, for example).</p>
 </div>
 
 
@@ -133,7 +137,7 @@ apt install rows  <span class="c1"># Python library + CLI</span>
       &copy;2014-2017, Álvaro Justen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

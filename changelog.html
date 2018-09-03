@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>rows’ Log of Changes &#8212; rows 0.3.1 documentation</title>
+    <title>rows’ Log of Changes &#8212; rows 0.3.2dev0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3.1',
+        VERSION:     '0.3.2dev0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -44,9 +44,62 @@
             
   <div class="section" id="rows-log-of-changes">
 <span id="rows-log-of-changes"></span><h1>rows&#8217; Log of Changes<a class="headerlink" href="#rows-log-of-changes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="version-0-3-2">
-<span id="version-0-3-2"></span><h2>Version <code class="docutils literal"><span class="pre">0.3.2</span></code><a class="headerlink" href="#version-0-3-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-0-4-0">
+<span id="version-0-4-0"></span><h2>Version <code class="docutils literal"><span class="pre">0.4.0</span></code><a class="headerlink" href="#version-0-4-0" title="Permalink to this headline">¶</a></h2>
 <p><strong>Released on: (under development)</strong></p>
+<div class="section" id="new-features-and-enhancaments">
+<span id="new-features-and-enhancaments"></span><h3>New Features and Enhancaments<a class="headerlink" href="#new-features-and-enhancaments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Added official Python 3.6 support</li>
+<li>Implemented <code class="docutils literal"><span class="pre">Table.__iadd__</span></code> (<code class="docutils literal"><span class="pre">table</span> <span class="pre">+=</span> <span class="pre">other</span></code> will work)</li>
+<li><code class="docutils literal"><span class="pre">Table.__add__</span></code> test is deterministic now</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/224">#224</a> Add <code class="docutils literal"><span class="pre">|</span></code> as possible
+delimiter (CSV dialect detection)</li>
+<li>Export CSV in batches</li>
+<li>Change CSV dialect detection sample size to 256KiB</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/242">#242</a> (CLI) Add
+<code class="docutils literal"><span class="pre">--fields</span></code>/<code class="docutils literal"><span class="pre">--fields-exclude</span></code> to <code class="docutils literal"><span class="pre">convert</span></code>, <code class="docutils literal"><span class="pre">join</span></code> and <code class="docutils literal"><span class="pre">sum</span></code> (and rename
+<code class="docutils literal"><span class="pre">--fields-exclude</span></code> on <code class="docutils literal"><span class="pre">print</span></code>), also remove <code class="docutils literal"><span class="pre">--fields</span></code> from <code class="docutils literal"><span class="pre">query</span></code> (is not
+needed).</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/235">#235</a> Implement <code class="docutils literal"><span class="pre">--http-cache</span></code>
+and <code class="docutils literal"><span class="pre">--http-cache-path</span></code>.</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/237">#237</a> Implement <code class="docutils literal"><span class="pre">rows</span> <span class="pre">schema</span></code>
+(generates schema in text, SQL and Django models).</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/243">#243</a> Change license to LGPL3.0</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/225">#225</a> Create export callbacks
+(CSV and SQLite plugins)</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/234">#234</a> Remove <code class="docutils literal"><span class="pre">BinaryField</span></code> from
+the default list of detection types</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/pull/270">#270</a> Added options to export
+pretty text table frames (TXT plugin)</li>
+<li>Add <code class="docutils literal"><span class="pre">csv2sqlite</span></code> CLI subcommand</li>
+<li>Create <code class="docutils literal"><span class="pre">rows.utils.open_compressed</span></code> helper function: can read/write files,
+automatically dealing with on-the-fly compression</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/274">#274</a> <code class="docutils literal"><span class="pre">start_row</span></code> and
+<code class="docutils literal"><span class="pre">start_column</span></code> now behave the same way in XLS and XLSX</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/261">#261</a> Add support to <code class="docutils literal"><span class="pre">end_row</span></code>
+and <code class="docutils literal"><span class="pre">end_column</span></code> on XLS and XLSX (thanks
+<a class="reference external" href="https://github.com/Lrcezimbra">&#64;Lrcezimbra</a> for the suggestion)</li>
+<li>Add progress bar support to <code class="docutils literal"><span class="pre">utils.download_file</span></code></li>
+<li>Enable progress bar when downloading from CLI</li>
+<li>Add helper class CsvLazyDictWriter</li>
+<li>Add pgimport and pgexport functions and CLI commands</li>
+<li>Add sqlite2csv function and CLI command</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/4">#4</a> Add PostgreSQL plugin (thanks
+to <a class="reference external" href="https://github.com/juliano777">&#64;juliano777</a>)</li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<span id="bug-fixes"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/223">#223</a> <code class="docutils literal"><span class="pre">UnicodeDecodeError</span></code> on
+dialect detection</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/214">#214</a> Problem detecting dialect</li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/181">#181</a> Create slugs inside
+<code class="docutils literal"><span class="pre">Table.__init__</span></code></li>
+<li><a class="reference external" href="https://github.com/turicas/rows/issues/221">#221</a> Error on pip install rows</li>
+</ul>
+</div>
 </div>
 <div class="section" id="version-0-3-1">
 <span id="version-0-3-1"></span><h2>Version <code class="docutils literal"><span class="pre">0.3.1</span></code><a class="headerlink" href="#version-0-3-1" title="Permalink to this headline">¶</a></h2>
@@ -63,7 +116,7 @@ examples.</li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
-<span id="bug-fixes"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/turicas/rows/pull/200">#200</a> Escape output when exporting
 to HTML (thanks to <a class="reference external" href="https://github.com/arloc">&#64;arloc</a>)</li>
@@ -81,7 +134,7 @@ handle negative values correctly if using locale (thanks to
 <span id="backwards-incompatible-changes"></span><h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="bug-fixes">
-<span id="id1"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Return <code class="docutils literal"><span class="pre">None</span></code> on XLS blank cells;</li>
 <li><a class="reference external" href="https://github.com/turicas/rows/issues/188">#188</a> Change <code class="docutils literal"><span class="pre">sample_size</span></code> on
@@ -118,7 +171,7 @@ plugins;</li>
 <span id="version-0-2-1"></span><h2>Version <code class="docutils literal"><span class="pre">0.2.1</span></code><a class="headerlink" href="#version-0-2-1" title="Permalink to this headline">¶</a></h2>
 <p><strong>Released on: 2016-08-10</strong></p>
 <div class="section" id="backwards-incompatible-changes">
-<span id="id2"></span><h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">rows.utils.export_to_uri</span></code> signature is now like <code class="docutils literal"><span class="pre">rows.export_to_*</span></code> (first
 the <code class="docutils literal"><span class="pre">rows.Table</span></code> object, then the URI)</li>
@@ -127,7 +180,7 @@ the <code class="docutils literal"><span class="pre">rows.Table</span></code> ob
 </ul>
 </div>
 <div class="section" id="bug-fixes">
-<span id="id3"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/turicas/rows/issues/170">#170</a> (SQLite plugin) Error
 converting <code class="docutils literal"><span class="pre">int</span></code> and <code class="docutils literal"><span class="pre">float</span></code> when value is <code class="docutils literal"><span class="pre">None</span></code>.</li>
@@ -148,7 +201,7 @@ serialization/deserialization in all plugins (and also field types)</li>
 </ul>
 </div>
 <div class="section" id="enhancements-and-refactorings">
-<span id="id4"></span><h3>Enhancements and Refactorings<a class="headerlink" href="#enhancements-and-refactorings" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>Enhancements and Refactorings<a class="headerlink" href="#enhancements-and-refactorings" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Refactor <code class="docutils literal"><span class="pre">rows.utils.import_from_uri</span></code></li>
 <li>Encoding and file type are better detected on <code class="docutils literal"><span class="pre">rows.utils.import_from_uri</span></code></li>
@@ -165,14 +218,14 @@ type/plugin detection</li>
 <span id="version-0-2-0"></span><h2>Version <code class="docutils literal"><span class="pre">0.2.0</span></code><a class="headerlink" href="#version-0-2-0" title="Permalink to this headline">¶</a></h2>
 <p><strong>Released on: 2016-07-15</strong></p>
 <div class="section" id="backwards-incompatible-changes">
-<span id="id5"></span><h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Backwards Incompatible Changes<a class="headerlink" href="#backwards-incompatible-changes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">rows.fields.UnicodeField</span></code> was renamed to <code class="docutils literal"><span class="pre">rows.fields.TextField</span></code></li>
 <li><code class="docutils literal"><span class="pre">rows.fields.BytesField</span></code> was renamed to <code class="docutils literal"><span class="pre">rows.fields.BinaryField</span></code></li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
-<span id="id6"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix import errors on older versions of urllib3 and Python (thanks to
 <a class="reference external" href="https://github.com/jeanferri">&#64;jeanferri</a>)</li>
@@ -346,7 +399,11 @@ PyPI)</li>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">rows&#8217; Log of Changes</a><ul>
-<li><a class="reference internal" href="#version-0-3-2">Version <code class="docutils literal"><span class="pre">0.3.2</span></code></a></li>
+<li><a class="reference internal" href="#version-0-4-0">Version <code class="docutils literal"><span class="pre">0.4.0</span></code></a><ul>
+<li><a class="reference internal" href="#new-features-and-enhancaments">New Features and Enhancaments</a></li>
+<li><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#version-0-3-1">Version <code class="docutils literal"><span class="pre">0.3.1</span></code></a><ul>
 <li><a class="reference internal" href="#enhancements">Enhancements</a></li>
 <li><a class="reference internal" href="#bug-fixes">Bug Fixes</a></li>
@@ -413,7 +470,7 @@ PyPI)</li>
       &copy;2014-2017, Álvaro Justen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

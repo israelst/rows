@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Developing &#8212; rows 0.3.1 documentation</title>
+    <title>Contributing &#8212; rows 0.3.2dev0 documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3.1',
+        VERSION:     '0.3.2dev0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -43,8 +43,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="developing">
-<span id="developing"></span><h1>Developing<a class="headerlink" href="#developing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="contributing">
+<span id="contributing"></span><h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-your-development-environment">
+<span id="creating-your-development-environment"></span><h2>Creating your development environment<a class="headerlink" href="#creating-your-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>The preferred way is to create a virtualenv (you can do by using virtualenv,
+virtualenvwrapper, pyenv or whatever tool you&#8217;d like).</p>
 <p>Create the virtualenv:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>mkvirtualenv rows
 </pre></div>
@@ -57,6 +61,19 @@
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install -r requirements-development.txt
 </pre></div>
 </div>
+</div>
+<div class="section" id="running-the-tests">
+<span id="running-the-tests"></span><h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
+<p>There are two possible ways of running the tests: on your own virtualenv or for
+each Python version.</p>
+<div class="section" id="running-on-your-virtualenv">
+<span id="running-on-your-virtualenv"></span><h3>Running on your virtualenv<a class="headerlink" href="#running-on-your-virtualenv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests -dsv --with-yanc --with-coverage --cover-package rows tests/*.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-for-all-python-versions">
+<span id="running-for-all-python-versions"></span><h3>Running for all Python versions<a class="headerlink" href="#running-for-all-python-versions" title="Permalink to this headline">¶</a></h3>
 <p>Run tests:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>make <span class="nb">test</span>
 </pre></div>
@@ -72,18 +89,35 @@ tox -e py35
 </div>
 <p><em>tox known issues</em> : running tox with py27 environ may raise InvocationError in
 non Linux environments. To avoid it you may rebuild tox environment in every
-run with <code class="docutils literal"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">py27</span> <span class="pre">-r</span></code> or if you want to run nosetests directly:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests -dsv --with-yanc --with-coverage --cover-package rows tests/*.py
+run with <code class="docutils literal"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">py27</span> <span class="pre">-r</span></code> or if you want to run nosetests directly (see last
+section).</p>
+</div>
+</div>
+<div class="section" id="running-postgresql-tests">
+<span id="running-postgresql-tests"></span><h2>Running PostgreSQL tests<a class="headerlink" href="#running-postgresql-tests" title="Permalink to this headline">¶</a></h2>
+<p>A PostgreSQL server is needed to run the PostgreSQL plugin tests. You can use
+<a class="reference external" href="https://docker.io/">Docker</a> to easily run a PostgreSQL server, but can also
+use your own method to run it. The <code class="docutils literal"><span class="pre">POSTGRESQL_URI</span></code> environment variable need
+to be se so you can run the tests.</p>
+<p>Running the PostgreSQL container using docker-compose, set the environment
+variable and run the PostgreSQL-specific tests:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker-compose -p rows -f docker-compose.yml up -d
+<span class="nb">export</span> <span class="nv">POSTGRESQL_URI</span><span class="o">=</span>postgres://postgres:postgres@127.0.0.1:42001/rows
+nosetests -dsv --with-yanc --with-coverage --cover-package rows tests/tests_plugin_postgresql.py
 </pre></div>
 </div>
+</div>
+<div class="section" id="generating-the-manual">
+<span id="generating-the-manual"></span><h2>Generating the manual<a class="headerlink" href="#generating-the-manual" title="Permalink to this headline">¶</a></h2>
 <p>To create the man page you&#8217;ll need to install <a class="reference external" href="http://mvertes.free.fr/">txt2man</a>. In Debian
 (and Debian-based distributions) you can install by running:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>aptitude install txt2man
+<div class="highlight-bash"><div class="highlight"><pre><span></span>apt install txt2man
 </pre></div>
 </div>
 <p>Then, you can generate the <code class="docutils literal"><span class="pre">rows.1</span></code> file by running:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>make man
 </pre></div>
+</div>
 </div>
 </div>
 
@@ -92,7 +126,22 @@ run with <code class="docutils literal"><span class="pre">tox</span> <span class
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Contributing</a><ul>
+<li><a class="reference internal" href="#creating-your-development-environment">Creating your development environment</a></li>
+<li><a class="reference internal" href="#running-the-tests">Running the tests</a><ul>
+<li><a class="reference internal" href="#running-on-your-virtualenv">Running on your virtualenv</a></li>
+<li><a class="reference internal" href="#running-for-all-python-versions">Running for all Python versions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-postgresql-tests">Running PostgreSQL tests</a></li>
+<li><a class="reference internal" href="#generating-the-manual">Generating the manual</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
@@ -126,7 +175,7 @@ run with <code class="docutils literal"><span class="pre">tox</span> <span class
       &copy;2014-2017, Álvaro Justen.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
