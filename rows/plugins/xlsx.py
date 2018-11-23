@@ -59,7 +59,7 @@ def import_from_xlsx(filename_or_fobj, sheet_name=None, sheet_index=0,
                      start_row=0, start_column=0, end_row=None,
                      end_column=None, *args, **kwargs):
     """Return a rows.Table created from imported XLSX file."""
-    
+
     workbook = load_workbook(filename_or_fobj, data_only=True)
     if sheet_name is None:
         sheet_name = workbook.sheetnames[sheet_index]
@@ -123,7 +123,7 @@ def _python_to_cell(field_types):
 def export_to_xlsx(table, filename_or_fobj=None, sheet_name='Sheet1', *args,
                    **kwargs):
     """Export the rows.Table to XLSX file and return the saved file."""
-    
+
     workbook = Workbook()
     sheet = workbook.active
     sheet.title = sheet_name
