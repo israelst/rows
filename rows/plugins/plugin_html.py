@@ -27,16 +27,17 @@ from rows.plugins.utils import (create_table, export_data,
 
 try:
     from HTMLParser import HTMLParser  # Python 2
-except:
-    from html.parser import HTMLParser  # Python 3
 
+    unescape = HTMLParser().unescape
+except:
+    import html  # Python 3
+
+    unescape = html.unescape
 
 try:
     from html import escape  # Python 3
 except:
     from cgi import escape  # Python 2
-
-unescape = HTMLParser().unescape
 
 
 def _get_content(element):
