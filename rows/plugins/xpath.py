@@ -22,17 +22,15 @@ from lxml.html import fromstring as tree_from_string
 
 from rows.plugins.utils import create_table, get_filename_and_fobj
 
+
 try:
     from HTMLParser import HTMLParser  # Python 2
-except ImportError:
-    from html.parser import HTMLParser  # Python 3
 
+    unescape = HTMLParser().unescape
+except:
+    import html  # Python 3
 
-
-
-
-
-unescape = HTMLParser().unescape
+    unescape = html.unescape
 
 
 def _get_row_data(fields_xpath):
